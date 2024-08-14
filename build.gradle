@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+allprojects {
+
+    repositories {
+        mavenCentral()
+    }
+
+}
+
+// service, 즉 부모프로젝트는 소스코드를 가지지 않는다. 따라서 Jar 를 생성하지 않도록 제한
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = false
+}
