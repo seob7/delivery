@@ -28,6 +28,8 @@ public class LoggerFilter implements Filter {
         ContentCachingResponseWrapper res = new ContentCachingResponseWrapper(
             (HttpServletResponse) response);
 
+        log.info("INIT URI : {}", req.getRequestURI());
+
         chain.doFilter(req, res);
 
         // request 정보
