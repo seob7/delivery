@@ -1,7 +1,7 @@
 package com.delivery.api.account;
 
 import com.delivery.api.account.model.AccountMeResponse;
-import com.delivery.api.common.Api;
+import com.delivery.api.common.api.Api;
 import com.delivery.db.account.AccountRepository;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
