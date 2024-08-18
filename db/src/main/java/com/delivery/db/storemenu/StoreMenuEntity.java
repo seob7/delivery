@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "store_meunu")
+@Table(name = "store_menu")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
