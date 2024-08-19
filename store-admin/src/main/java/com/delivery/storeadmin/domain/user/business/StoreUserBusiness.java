@@ -1,14 +1,14 @@
-package com.delivery.storeadmin.domain.business;
+package com.delivery.storeadmin.domain.user.business;
 
 import com.delivery.db.store.StoreEntity;
 import com.delivery.db.store.StoreRepository;
 import com.delivery.db.store.enums.StoreStatus;
 import com.delivery.db.storeuser.StoreUserEntity;
 import com.delivery.storeadmin.common.annotation.Business;
-import com.delivery.storeadmin.domain.controller.model.StoreUserRegisterRequest;
-import com.delivery.storeadmin.domain.controller.model.StoreUserResponse;
-import com.delivery.storeadmin.domain.converter.StoreUserConverter;
-import com.delivery.storeadmin.domain.service.StoreUserService;
+import com.delivery.storeadmin.domain.user.controller.model.StoreUserRegisterRequest;
+import com.delivery.storeadmin.domain.user.controller.model.StoreUserResponse;
+import com.delivery.storeadmin.domain.user.converter.StoreUserConverter;
+import com.delivery.storeadmin.domain.user.service.StoreUserService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 

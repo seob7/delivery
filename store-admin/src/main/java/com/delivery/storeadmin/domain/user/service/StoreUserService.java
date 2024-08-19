@@ -1,4 +1,4 @@
-package com.delivery.storeadmin.domain.service;
+package com.delivery.storeadmin.domain.user.service;
 
 import com.delivery.db.storeuser.StoreUserEntity;
 import com.delivery.db.storeuser.StoreUserRepository;

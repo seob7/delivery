@@ -1,10 +1,10 @@
-package com.delivery.storeadmin.domain.converter;
+package com.delivery.storeadmin.domain.user.converter;
 
 import com.delivery.db.store.StoreEntity;
 import com.delivery.db.storeuser.StoreUserEntity;
 import com.delivery.storeadmin.common.annotation.Converter;
-import com.delivery.storeadmin.domain.controller.model.StoreUserRegisterRequest;
-import com.delivery.storeadmin.domain.controller.model.StoreUserResponse;
+import com.delivery.storeadmin.domain.user.controller.model.StoreUserRegisterRequest;
+import com.delivery.storeadmin.domain.user.controller.model.StoreUserResponse;
 import lombok.RequiredArgsConstructor;
 
 @Converter
