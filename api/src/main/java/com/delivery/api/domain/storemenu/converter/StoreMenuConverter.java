@@ -6,6 +6,7 @@ import com.delivery.api.common.exception.ApiException;
 import com.delivery.api.domain.storemenu.controller.model.StoreMenuRegisterRequest;
 import com.delivery.api.domain.storemenu.controller.model.StoreMenuResponse;
 import com.delivery.db.storemenu.StoreMenuEntity;
+import java.util.List;
 import java.util.Optional;
 
 @Converter
@@ -35,6 +36,10 @@ public class StoreMenuConverter {
                 .sequence(storeMenuEntity.getSequence())
                 .build();
         }).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+    }
+
+    public List<StoreMenuResponse> toResponse(List<StoreMenuEntity> list) {
+        return list.stream().map(storeMenuEntity -> toResponse(storeMenuEntity)).toList();
     }
 
 }
