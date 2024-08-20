@@ -35,12 +35,15 @@ dependencies {
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.6.0'
 
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
     // JWT
     implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.6'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.6'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.12.6'
 
-    implementation project(':db') // API 가 DB를 가져다 씀
+    implementation project(':db') // API 가 DB 를 가져다 씀
+    implementation project(':common') // API 가 COMMON 를 가져다 씀
 }
 
 test {
