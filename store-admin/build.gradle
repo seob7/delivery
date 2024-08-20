@@ -39,11 +39,13 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.6.0'
 
 
     implementation project(':db') // API 가 DB를 가져다 씀
+    implementation project(':common') // API 가 DB를 가져다 씀
 }
 
 test {
