@@ -40,8 +40,10 @@ public class UserOrderBusiness {
         List<StoreMenuEntity> storeMenuEntityList = request.getStoreMenuIdList()
             .stream().map(menuId -> storeMenuService.getStoreMenuWithThrow(menuId)).toList();
 
-        UserOrderEntity userOrderEntity = userOrderConverter.toEntity(user, storeMenuEntityList);
+        UserOrderEntity userOrderEntity = userOrderConverter.toEntity(user, request.getStoreId(),
+            storeMenuEntityList);
 
+        // 주문
         UserOrderEntity newUserOrderEntity = userOrderService.order(userOrderEntity);
 
         List<UserOrderMenuEntity> userOrderMenuEntityList = storeMenuEntityList.stream()

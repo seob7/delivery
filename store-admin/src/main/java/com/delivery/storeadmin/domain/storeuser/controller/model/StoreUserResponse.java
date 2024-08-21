@@ -1,10 +1,7 @@
-package com.delivery.storeadmin.domain.user.controller.model;
+package com.delivery.storeadmin.domain.storeuser.controller.model;
 
 import com.delivery.db.storeuser.enums.StoreUserRole;
 import com.delivery.db.storeuser.enums.StoreUserStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

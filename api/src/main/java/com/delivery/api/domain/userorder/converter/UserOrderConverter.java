@@ -11,13 +11,15 @@ import java.util.List;
 @Converter
 public class UserOrderConverter {
 
-    public UserOrderEntity toEntity(User user, List<StoreMenuEntity> storeMenuEntityList) {
+    public UserOrderEntity toEntity(User user, Long storeId,
+        List<StoreMenuEntity> storeMenuEntityList) {
 
         BigDecimal totalAmount = storeMenuEntityList.stream().map(it -> it.getAmount())
             .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         return UserOrderEntity.builder()
             .userId(user.getId())
+            .storeId(storeId)
             .amount(totalAmount)
             .build();
     }

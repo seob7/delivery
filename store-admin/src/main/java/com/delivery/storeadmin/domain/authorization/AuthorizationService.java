@@ -5,7 +5,7 @@ import com.delivery.db.store.StoreRepository;
 import com.delivery.db.store.enums.StoreStatus;
 import com.delivery.db.storeuser.StoreUserEntity;
 import com.delivery.storeadmin.domain.authorization.model.UserSession;
-import com.delivery.storeadmin.domain.user.service.StoreUserService;
+import com.delivery.storeadmin.domain.storeuser.service.StoreUserService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
