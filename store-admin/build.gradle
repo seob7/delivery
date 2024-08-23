@@ -2,6 +2,9 @@ plugins {
     id 'java'
     id 'org.springframework.boot' // 버전 명시 X -> 부모의 버전을 따라감
     id 'io.spring.dependency-management' // 버전 명시 X -> 부모의 버전을 따라감
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.spring'
+    id 'org.jetbrains.kotlin.plugin.jpa'
 }
 
 group = 'com.delivery'
@@ -43,6 +46,9 @@ dependencies {
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.6.0'
 
+    // kotlin
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
 
     implementation project(':db') // API 가 DB를 가져다 씀
     implementation project(':common') // API 가 DB를 가져다 씀
@@ -50,6 +56,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll '-Xjsr305=strict'
+    }
 }
 
 bootJar {

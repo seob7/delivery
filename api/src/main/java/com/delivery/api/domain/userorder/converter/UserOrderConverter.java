@@ -3,6 +3,7 @@ package com.delivery.api.domain.userorder.converter;
 import com.delivery.api.domain.user.model.User;
 import com.delivery.api.domain.userorder.controller.model.UserOrderResponse;
 import com.delivery.common.annotation.Converter;
+import com.delivery.db.store.StoreEntity;
 import com.delivery.db.storemenu.StoreMenuEntity;
 import com.delivery.db.userorder.UserOrderEntity;
 import java.math.BigDecimal;
@@ -11,7 +12,7 @@ import java.util.List;
 @Converter
 public class UserOrderConverter {
 
-    public UserOrderEntity toEntity(User user, Long storeId,
+    public UserOrderEntity toEntity(User user, StoreEntity storeEntity,
         List<StoreMenuEntity> storeMenuEntityList) {
 
         BigDecimal totalAmount = storeMenuEntityList.stream().map(it -> it.getAmount())
@@ -19,7 +20,7 @@ public class UserOrderConverter {
 
         return UserOrderEntity.builder()
             .userId(user.getId())
-            .storeId(storeId)
+            .store(storeEntity)
             .amount(totalAmount)
             .build();
     }

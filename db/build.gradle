@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' // 버전 명시 X -> 부모의 버전을 따라감
     id 'io.spring.dependency-management' // 버전 명시 X -> 부모의 버전을 따라감
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.jpa'
 }
 
 group = 'com.delivery'
@@ -27,6 +29,8 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'com.mysql:mysql-connector-j'
@@ -35,6 +39,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll '-Xjsr305=strict'
+    }
 }
 
 bootJar {

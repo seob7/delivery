@@ -3,8 +3,8 @@ package com.delivery.api.domain.user.service;
 import com.delivery.common.error.ErrorCode;
 import com.delivery.common.error.UserErrorCode;
 import com.delivery.common.exception.ApiException;
-import com.delivery.db.user.UserEntity;
 import com.delivery.db.user.UserRepository;
+import com.delivery.db.user.UserEntity;
 import com.delivery.db.user.enums.UserStatus;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -31,14 +31,14 @@ public class UserService {
     }
 
     public UserEntity getUserWithThrow(String email, String password) {
-        return userRepository.findFirstByEmailAndPasswordAndStatusOrderByIdDesc(email, password,
-                UserStatus.REGISTERED)
+        return Optional.ofNullable(userRepository.findFirstByEmailAndPasswordAndStatusOrderByIdDesc(email, password,
+                UserStatus.REGISTERED))
             .orElseThrow(() -> new ApiException(UserErrorCode.USER_NOT_FOUND));
     }
 
     public UserEntity getUserWithThrow(Long userId) {
-        return userRepository.findFirstByIdAndStatusOrderByIdDesc(userId,
-                UserStatus.REGISTERED)
+        return Optional.ofNullable(userRepository.findFirstByIdAndStatusOrderByIdDesc(userId,
+                UserStatus.REGISTERED))
             .orElseThrow(() -> new ApiException(UserErrorCode.USER_NOT_FOUND));
     }
 

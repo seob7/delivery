@@ -43,7 +43,7 @@ public class UserOrderBusiness {
         // user order menu -> store menu
         List<StoreMenuResponse> storeMenuResponseList = userOrderMenuList.stream()
             .map(userOrderMenuEntity ->
-                storeMenuService.getStoreMenuWithThrow(userOrderMenuEntity.getStoreMenuId()))
+                storeMenuService.getStoreMenuWithThrow(userOrderMenuEntity.getStoreMenu().getId()))
             .map(storeMenuEntity ->
                 storeMenuConverter.toResponse(storeMenuEntity))
             .toList();
@@ -57,7 +57,7 @@ public class UserOrderBusiness {
             .build();
 
         UserSseConnection userConnection = sseConnectionPool.getSession(
-            userOrderEntity.getStoreId().toString());
+            userOrderEntity.getStore().getId().toString());
 
         // 주문 메뉴, 가격, 상태
 

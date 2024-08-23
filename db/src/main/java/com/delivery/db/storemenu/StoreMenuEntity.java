@@ -1,11 +1,14 @@
 package com.delivery.db.storemenu;
 
 import com.delivery.db.BaseEntity;
+import com.delivery.db.store.StoreEntity;
 import com.delivery.db.storemenu.enums.StoreMenuStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
@@ -23,8 +26,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class StoreMenuEntity extends BaseEntity {
 
-    @Column(nullable = false)
-    private Long storeId;
+    @JoinColumn(nullable = false)
+    @ManyToOne
+    private StoreEntity store;
 
     @Column(length = 100, nullable = false)
     private String name;

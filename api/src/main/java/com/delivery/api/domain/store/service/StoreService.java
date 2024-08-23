@@ -19,7 +19,7 @@ public class StoreService {
 
     // 유효한 스토어 가져오기
     public StoreEntity getStoreWithThrow(Long id) {
-        return storeRepository.findFirstByIdAndStatusOrderByIdDesc(id, StoreStatus.REGISTERED)
+        return Optional.ofNullable(storeRepository.findFirstByIdAndStatusOrderByIdDesc(id, StoreStatus.REGISTERED))
             .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 

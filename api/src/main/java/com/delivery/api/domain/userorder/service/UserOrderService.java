@@ -18,13 +18,13 @@ public class UserOrderService {
     private final UserOrderRepository userOrderRepository;
 
     public UserOrderEntity getUserOrderWithOutStatusWithThrow(Long id, Long userId) {
-        return userOrderRepository.findAllByIdAndUserId(id, userId)
+        return Optional.ofNullable(userOrderRepository.findAllByIdAndUserId(id, userId))
             .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 
     public UserOrderEntity getUserOrderWithThrow(Long id, Long userId) {
-        return userOrderRepository.findAllByIdAndStatusAndUserId(id, UserOrderStatus.REGISTERED,
-            userId).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+        return Optional.ofNullable(userOrderRepository.findAllByIdAndStatusAndUserId(id, UserOrderStatus.REGISTERED,
+            userId)).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 
     public List<UserOrderEntity> getUserOrderList(Long userId) {

@@ -17,8 +17,8 @@ public class StoreMenuService {
     private final StoreMenuRepository storeMenuRepository;
 
     public StoreMenuEntity getStoreMenuWithThrow(Long id) {
-        return storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id,
-            StoreMenuStatus.REGISTERED).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+        return Optional.ofNullable(storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id,
+            StoreMenuStatus.REGISTERED)).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
 
     }
 
