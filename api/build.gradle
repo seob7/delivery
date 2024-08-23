@@ -2,6 +2,10 @@ plugins {
     id 'java'
     id 'org.springframework.boot' // 버전 명시 X -> 부모의 버전을 따라감
     id 'io.spring.dependency-management' // 버전 명시 X -> 부모의 버전을 따라감
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.spring'
+    id 'org.jetbrains.kotlin.plugin.jpa'
+
 }
 
 group = 'com.delivery'
@@ -42,12 +46,22 @@ dependencies {
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.6'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.12.6'
 
+    // kotlin
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+
     implementation project(':db') // API 가 DB 를 가져다 씀
     implementation project(':common') // API 가 COMMON 를 가져다 씀
 }
 
 test {
     useJUnitPlatform()
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll '-Xjsr305=strict'
+    }
 }
 
 bootJar {
