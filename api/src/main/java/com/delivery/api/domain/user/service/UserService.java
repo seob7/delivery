@@ -1,8 +1,8 @@
 package com.delivery.api.domain.user.service;
 
-import com.delivery.api.common.error.ErrorCode;
-import com.delivery.api.common.error.UserErrorCode;
-import com.delivery.api.common.exception.ApiException;
+import com.delivery.common.error.ErrorCode;
+import com.delivery.common.error.UserErrorCode;
+import com.delivery.common.exception.ApiException;
 import com.delivery.db.user.UserEntity;
 import com.delivery.db.user.UserRepository;
 import com.delivery.db.user.enums.UserStatus;

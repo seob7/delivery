@@ -1,7 +1,7 @@
 package com.delivery.api.domain.userorderemenu.service;
 
-import com.delivery.api.common.error.ErrorCode;
-import com.delivery.api.common.exception.ApiException;
+import com.delivery.common.error.ErrorCode;
+import com.delivery.common.exception.ApiException;
 import com.delivery.db.userordermenu.UserOrderMenuEntity;
 import com.delivery.db.userordermenu.UserOrderMenuRepository;
 import com.delivery.db.userordermenu.enums.UserOrderMenuStatus;

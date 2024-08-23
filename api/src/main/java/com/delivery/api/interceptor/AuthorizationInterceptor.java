@@ -1,8 +1,8 @@
 package com.delivery.api.interceptor;
 
-import com.delivery.api.common.error.ErrorCode;
-import com.delivery.api.common.error.TokenErrorCode;
-import com.delivery.api.common.exception.ApiException;
+import com.delivery.common.error.ErrorCode;
+import com.delivery.common.error.TokenErrorCode;
+import com.delivery.common.exception.ApiException;
 import com.delivery.api.domain.token.business.TokenBusiness;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,7 +1,7 @@
 package com.delivery.api.domain.storemenu.service;
 
-import com.delivery.api.common.error.ErrorCode;
-import com.delivery.api.common.exception.ApiException;
+import com.delivery.common.error.ErrorCode;
+import com.delivery.common.exception.ApiException;
 import com.delivery.db.storemenu.StoreMenuEntity;
 import com.delivery.db.storemenu.StoreMenuRepository;
 import com.delivery.db.storemenu.enums.StoreMenuStatus;

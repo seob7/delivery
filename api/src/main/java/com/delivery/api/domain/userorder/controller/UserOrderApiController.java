@@ -1,7 +1,7 @@
 package com.delivery.api.domain.userorder.controller;
 
-import com.delivery.api.common.annotation.UserSession;
-import com.delivery.api.common.api.Api;
+import com.delivery.common.annotation.UserSession;
+import com.delivery.common.api.Api;
 import com.delivery.api.domain.user.model.User;
 import com.delivery.api.domain.userorder.business.UserOrderBusiness;
 import com.delivery.api.domain.userorder.controller.model.UserOrderDetailResponse;

@@ -1,7 +1,7 @@
 package com.delivery.api.domain.token.service;
 
-import com.delivery.api.common.error.ErrorCode;
-import com.delivery.api.common.exception.ApiException;
+import com.delivery.common.error.ErrorCode;
+import com.delivery.common.exception.ApiException;
 import com.delivery.api.domain.token.ifs.TokenHelperIfs;
 import com.delivery.api.domain.token.model.TokenDto;
 import java.util.HashMap;

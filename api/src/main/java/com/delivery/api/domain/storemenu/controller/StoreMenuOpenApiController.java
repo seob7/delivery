@@ -1,6 +1,6 @@
 package com.delivery.api.domain.storemenu.controller;
 
-import com.delivery.api.common.api.Api;
+import com.delivery.common.api.Api;
 import com.delivery.api.domain.storemenu.business.StoreMenuBusiness;
 import com.delivery.api.domain.storemenu.controller.model.StoreMenuRegisterRequest;
 import com.delivery.api.domain.storemenu.controller.model.StoreMenuResponse;

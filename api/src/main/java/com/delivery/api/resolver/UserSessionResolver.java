@@ -1,6 +1,6 @@
 package com.delivery.api.resolver;
 
-import com.delivery.api.common.annotation.UserSession;
+import com.delivery.common.annotation.UserSession;
 import com.delivery.api.domain.user.model.User;
 import com.delivery.api.domain.user.service.UserService;
 import com.delivery.db.user.UserEntity;

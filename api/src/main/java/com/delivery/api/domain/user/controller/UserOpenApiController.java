@@ -1,6 +1,6 @@
 package com.delivery.api.domain.user.controller;
 
-import com.delivery.api.common.api.Api;
+import com.delivery.common.api.Api;
 import com.delivery.api.domain.token.controller.model.TokenResponse;
 import com.delivery.api.domain.user.business.UserBusiness;
 import com.delivery.api.domain.user.controller.model.UserLoginRequest;

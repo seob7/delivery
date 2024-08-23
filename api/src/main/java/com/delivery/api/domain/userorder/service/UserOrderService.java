@@ -1,7 +1,7 @@
 package com.delivery.api.domain.userorder.service;
 
-import com.delivery.api.common.error.ErrorCode;
-import com.delivery.api.common.exception.ApiException;
+import com.delivery.common.error.ErrorCode;
+import com.delivery.common.exception.ApiException;
 import com.delivery.db.userorder.UserOrderEntity;
 import com.delivery.db.userorder.UserOrderRepository;
 import com.delivery.db.userorder.enums.UserOrderStatus;

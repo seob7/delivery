@@ -1,8 +1,8 @@
 package com.delivery.api.domain.token.converter;
 
-import com.delivery.api.common.annotation.Converter;
-import com.delivery.api.common.error.ErrorCode;
-import com.delivery.api.common.exception.ApiException;
+import com.delivery.common.annotation.Converter;
+import com.delivery.common.error.ErrorCode;
+import com.delivery.common.exception.ApiException;
 import com.delivery.api.domain.token.controller.model.TokenResponse;
 import com.delivery.api.domain.token.model.TokenDto;
 import java.util.Objects;

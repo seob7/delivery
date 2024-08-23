@@ -1,6 +1,6 @@
 package com.delivery.api.domain.store.controller;
 
-import com.delivery.api.common.api.Api;
+import com.delivery.common.api.Api;
 import com.delivery.api.domain.store.business.StoreBusiness;
 import com.delivery.api.domain.store.controller.model.StoreResponse;
 import com.delivery.db.store.enums.StoreCategory;

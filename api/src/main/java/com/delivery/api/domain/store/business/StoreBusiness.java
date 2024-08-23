@@ -1,6 +1,6 @@
 package com.delivery.api.domain.store.business;
 
-import com.delivery.api.common.annotation.Business;
+import com.delivery.common.annotation.Business;
 import com.delivery.api.domain.store.controller.model.StoreRegisterRequest;
 import com.delivery.api.domain.store.controller.model.StoreResponse;
 import com.delivery.api.domain.store.converter.StoreConverter;

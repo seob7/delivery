@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'com.delivery'
@@ -19,12 +20,27 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.26'  // Lombok 버전 명시
     annotationProcessor 'org.projectlombok:lombok:1.18.26'  // Lombok 버전 명시
 
+    // validation
+    implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
+
+    // spring core
+    implementation group: 'org.springframework', name: 'spring-core', version: '6.1.11'
+
+    // spring context
+    implementation group: 'org.springframework', name: 'spring-context', version: '6.1.11'
+
     // testImplementation platform('org.junit:junit-bom:5.10.0')
     // testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 test {
     useJUnitPlatform()
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll '-Xjsr305=strict'
+    }
 }
 
 jar {
