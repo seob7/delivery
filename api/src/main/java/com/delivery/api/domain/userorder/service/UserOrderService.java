@@ -74,7 +74,7 @@ public class UserOrderService {
 
     // 조리 시작
     public UserOrderEntity cooking(UserOrderEntity userOrderEntity) {
-        userOrderEntity.setCookingStoredAt(LocalDateTime.now());
+        userOrderEntity.setCookingStartedAt(LocalDateTime.now());
         return setStatus(userOrderEntity, UserOrderStatus.COOKING);
     }
 

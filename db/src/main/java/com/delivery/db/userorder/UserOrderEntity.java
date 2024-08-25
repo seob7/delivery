@@ -1,4 +1,4 @@
-package com.delivery.db.userorder;
+/*package com.delivery.db.userorder;
 
 import com.delivery.db.BaseEntity;
 import com.delivery.db.store.StoreEntity;
@@ -61,4 +61,4 @@ public class UserOrderEntity extends BaseEntity {
     @JsonIgnore
     private List<UserOrderMenuEntity> userOrderMenuList;
 
-}
+}*/

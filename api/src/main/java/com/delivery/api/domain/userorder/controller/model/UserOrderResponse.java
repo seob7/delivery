@@ -1,3 +1,4 @@
+/*
 package com.delivery.api.domain.userorder.controller.model;
 
 import com.delivery.db.userorder.enums.UserOrderStatus;
@@ -31,3 +32,4 @@ public class UserOrderResponse {
     private LocalDateTime receivedAt;
 
 }
+*/
