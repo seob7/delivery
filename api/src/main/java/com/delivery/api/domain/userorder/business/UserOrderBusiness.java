@@ -1,3 +1,4 @@
+/*
 package com.delivery.api.domain.userorder.business;
 
 import com.delivery.common.annotation.Business;
@@ -150,4 +151,4 @@ public class UserOrderBusiness {
             .storeResponse(storeConverter.toResponse(storeEntity))
             .build();
     }
-}
+}*/

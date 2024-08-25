@@ -1,3 +1,4 @@
+/*
 package com.delivery.api.domain.userorder.controller.model;
 
 import com.delivery.api.domain.store.controller.model.StoreResponse;
@@ -21,3 +22,4 @@ public class UserOrderDetailResponse {
     private List<StoreMenuResponse> storeMenuResponseList;
 
 }
+*/
