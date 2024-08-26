@@ -17,7 +17,7 @@ public class UserApiController {
 
     private final UserBusiness userBusiness;
 
-    @GetMapping
+    @GetMapping("/me")
     public Api<UserResponse> me(@UserSession User user) {
         UserResponse response = userBusiness.me(user);
         return Api.OK(response);

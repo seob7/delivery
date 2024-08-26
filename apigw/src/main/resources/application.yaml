@@ -1,2 +1,14 @@
 server:
   port: 9090
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: public-service-api # 이름
+          uri: http://localhost:8080 # api 서버 주소
+          predicates:
+            - Path=/service-api/open-api/**  # 이 경로로 들어온 주소는 위 api 서버 주소 경로로 보내짐
+          filters: # /service-api 가 지워지는 픽터
+            - RewritePath=/service-api(?<segment>/?.*), $\{segment}
+            - ServiceApiPublicFilter
