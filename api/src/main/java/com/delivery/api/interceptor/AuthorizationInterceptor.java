@@ -40,20 +40,15 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         }
 
         // header 검증
-        String accessToken = request.getHeader("authorization-token");
-        if(accessToken == null) {
-            throw new ApiException(TokenErrorCode.AUTHORIZATION_TOKEN_NOT_FOUND);
+        String userId = request.getHeader("x-user-id");
+        if (userId == null) {
+            throw new ApiException(ErrorCode.BAD_REQUEST, "x-user-id header 없음");
         }
 
-        Long userId = tokenBusiness.validationAccessToken(accessToken);
+        RequestAttributes requestContext = Objects.requireNonNull(
+            RequestContextHolder.getRequestAttributes());
+        requestContext.setAttribute("userId", userId, RequestAttributes.SCOPE_REQUEST);
+        return true;
 
-        if(userId != null) {
-            RequestAttributes requestContext = Objects.requireNonNull(
-                RequestContextHolder.getRequestAttributes());
-            requestContext.setAttribute("userId", userId, RequestAttributes.SCOPE_REQUEST);
-            return true;
-        }
-
-        throw new ApiException(ErrorCode.BAD_REQUEST, "인증 실패");
     }
 }

@@ -20,12 +20,14 @@ repositories {
 
 extra["springCloudVersion"] = "2023.0.3"
 
-dependencies {
+dependencies {    // kotlin
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.cloud:spring-cloud-starter-gateway")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(project(":common"))
 }
 
 dependencyManagement {
