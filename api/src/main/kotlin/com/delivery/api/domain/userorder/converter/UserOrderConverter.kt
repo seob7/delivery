@@ -9,20 +9,20 @@ import com.delivery.db.userorder.UserOrderEntity
 
 @Converter
 class UserOrderConverter {
+
     fun toEntity(
         user: User?,
         storeEntity: StoreEntity?,
         storeMenuEntityList: List<StoreMenuEntity>?
-
     ): UserOrderEntity {
-        val totalAmout = storeMenuEntityList?.mapNotNull {
-            it -> it.amount
-        }?.reduce{acc, bigDecimal -> acc.add(bigDecimal)}
+        val totalAmount = storeMenuEntityList
+            ?.mapNotNull { it -> it.amount }
+            ?.reduce { acc, bigDecimal -> acc.add(bigDecimal) }
 
         return UserOrderEntity(
             userId = user?.id,
             store = storeEntity,
-            amount = totalAmout,
+            amount = totalAmount,
         )
     }
 
@@ -31,13 +31,14 @@ class UserOrderConverter {
     ): UserOrderResponse {
         return UserOrderResponse(
             id = userOrderEntity?.id,
-            status =userOrderEntity?.status,
+            status = userOrderEntity?.status,
             amount = userOrderEntity?.amount,
             orderedAt = userOrderEntity?.orderedAt,
             acceptedAt = userOrderEntity?.acceptedAt,
-            cookingStoredAt = userOrderEntity?.cookingStartedAt,
+            cookingStartedAt = userOrderEntity?.cookingStartedAt,
             deliveryStartedAt = userOrderEntity?.deliveryStartedAt,
             receivedAt = userOrderEntity?.receivedAt
         )
     }
+
 }

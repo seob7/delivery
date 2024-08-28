@@ -34,19 +34,20 @@ class UserOrderBusiness(
     private val userOrderProducer: UserOrderProducer
 ) {
 
-    companion object : Log
+    companion object: Log
+
 
     fun userOrder(
         user: User?,
-        body: UserOrderRequest
+        body: UserOrderRequest?
     ): UserOrderResponse {
         // 가게 찾기
-        val storeEntity = storeService.getStoreWithThrow(body.storeId)
+        val storeEntity = storeService.getStoreWithThrow(body?.storeId)
 
         // 주문한 메뉴 찾기
-        val storeMenuEntityList = body?.storeMenuIdList?.mapNotNull { it ->
-            storeMenuService.getStoreMenuWithThrow(it)
-        }?.toList()
+        val storeMenuEntityList = body?.storeMenuIdList
+            ?.mapNotNull { storeMenuService.getStoreMenuWithThrow(it) }
+            ?.toList()
 
         val userOrderEntity = userOrderConverter.toEntity(
             user = user,
@@ -56,66 +57,79 @@ class UserOrderBusiness(
             userOrderService.order(this)
         }
 
-        val userOrderMenuEntityList = storeMenuEntityList?.map { it ->
-            userOrderMenuConverter.toEntity(userOrderEntity, it)
-        }?.toList()
+        // user order menu list 생성
+        val userOrderMenuEntityList = storeMenuEntityList
+            ?.map { userOrderMenuConverter.toEntity(userOrderEntity, it) }
+            ?.toList()
 
-        userOrderMenuEntityList?.forEach { it -> userOrderMenuService.order(it) }
+        userOrderMenuEntityList?.forEach { userOrderMenuService.order(it) }
 
+        // 비동기로 주문 알리기
         userOrderProducer.sendOrder(userOrderEntity)
 
         return userOrderConverter.toResponse(userOrderEntity)
-
     }
 
     fun current(
         user: User?
-    ): List<UserOrderDetailResponse> {
-        return userOrderService.current(user?.id).map { userOrderEntity ->
-            val storeMenuEntityList = userOrderEntity.userOrderMenuList?.stream()
-                ?.filter { userOrderMenuEntity -> userOrderMenuEntity.status == UserOrderMenuStatus.REGISTERED }
-                ?.map { userOrderMenuEntity -> userOrderMenuEntity.storeMenu }
-                ?.toList()
+    ): List<UserOrderDetailResponse>? {
+        return userOrderService.current(user?.id)
+            .map { userOrderEntity ->
 
-            UserOrderDetailResponse(
-                userOrderResponse = userOrderConverter.toResponse(userOrderEntity),
-                storeResponse = storeConverter.toResponse(userOrderEntity.store),
-                storeMenuResponseList = storeMenuConverter.toResponse(storeMenuEntityList)
-            )
-        }.toList()
+                val storeMenuEntityList = userOrderEntity.userOrderMenuList?.stream()
+                    ?.filter { userOrderMenuEntity ->
+
+                        userOrderMenuEntity.status == UserOrderMenuStatus.REGISTERED
+                    }?.map { userOrderMenuEntity ->
+
+                        userOrderMenuEntity.storeMenu
+                    }?.toList()
+
+                UserOrderDetailResponse(
+                    userOrderResponse = userOrderConverter.toResponse(userOrderEntity),
+                    storeResponse = storeConverter.toResponse(userOrderEntity.store),
+                    storeMenuResponseList = storeMenuConverter.toResponse(storeMenuEntityList)
+                )
+            }.toList()
     }
 
     fun history(
         user: User?
-    ): List<UserOrderDetailResponse> {
-        return userOrderService.history(user?.id).map { userOrderEntity ->
-            val storeMenuEntityList = userOrderEntity.userOrderMenuList?.stream()
-                ?.filter { userOrderMenuEntity -> userOrderMenuEntity.status == UserOrderMenuStatus.REGISTERED }
-                ?.map { userOrderMenuEntity -> userOrderMenuEntity.storeMenu }
-                ?.toList()
+    ): List<UserOrderDetailResponse>? {
+        return userOrderService.history(user?.id)
+            .map { userOrderEntity ->
 
-            UserOrderDetailResponse(
-                userOrderResponse = userOrderConverter.toResponse(userOrderEntity),
-                storeResponse = storeConverter.toResponse(userOrderEntity.store),
-                storeMenuResponseList = storeMenuConverter.toResponse(storeMenuEntityList)
-            )
-        }.toList()
+                val storeMenuEntityList = userOrderEntity.userOrderMenuList?.stream()
+                    ?.filter { userOrderMenuEntity ->
+
+                        userOrderMenuEntity.status == UserOrderMenuStatus.REGISTERED
+                    }?.map { userOrderMenuEntity ->
+
+                        userOrderMenuEntity.storeMenu
+                    }?.toList()
+
+                UserOrderDetailResponse(
+                    userOrderResponse = userOrderConverter.toResponse(userOrderEntity),
+                    storeResponse = storeConverter.toResponse(userOrderEntity.store),
+                    storeMenuResponseList = storeMenuConverter.toResponse(storeMenuEntityList)
+                )
+            }.toList()
     }
 
     fun read(
         user: User?,
         orderId: Long?
     ): UserOrderDetailResponse {
+
         return userOrderService.getUserOrderWithOutStatusWithThrow(orderId, user?.id)
             .let { userOrderEntity ->
 
-                val storeMenuEntityList = userOrderEntity.userOrderMenuList?.stream()
+                val storeMenuEntityList = userOrderEntity.userOrderMenuList
+                    ?.stream()
                     ?.filter { it.status == UserOrderMenuStatus.REGISTERED }
                     ?.map { it.storeMenu }
                     ?.toList()
-                    ?: listOf() //null 일때 빈값을 전달
-
-
+                    ?: listOf()
 
                 UserOrderDetailResponse(
                     userOrderResponse = userOrderConverter.toResponse(userOrderEntity),
@@ -123,5 +137,8 @@ class UserOrderBusiness(
                     storeMenuResponseList = storeMenuConverter.toResponse(storeMenuEntityList)
                 )
             }
+
     }
+
+
 }

@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Configuration
 class SwaggerConfig {
 
     @Bean
-    fun modelResolver(objectMapper: ObjectMapper) : ModelResolver {
+    fun modelResolver(
+        objectMapper: ObjectMapper
+    ): ModelResolver{
         return ModelResolver(objectMapper)
     }
-
 }

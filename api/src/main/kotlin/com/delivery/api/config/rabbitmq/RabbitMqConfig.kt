@@ -26,9 +26,16 @@ class RabbitMqConfig {
     }
 
     @Bean
-    fun binding(directExchange: DirectExchange, queue: Queue): Binding {
-        return BindingBuilder.bind(queue).to(directExchange).with("delivery.key")
+    fun binding(
+        directExchange: DirectExchange,
+        queue: Queue,
+    ): Binding {
+        return BindingBuilder.bind(queue)
+            .to(directExchange)
+            .with("delivery.key")
     }
+
+    // end queue 설정
 
     @Bean
     fun rabbitTemplate(
@@ -39,12 +46,14 @@ class RabbitMqConfig {
             setConnectionFactory(connectionFactory)
             setMessageConverter(messageConverter)
         }
+
         return rabbitTemplate
     }
 
     @Bean
-    fun messageConverter(objectMapper : ObjectMapper) : MessageConverter {
+    fun messageConverter(
+        objectMapper: ObjectMapper
+    ): MessageConverter {
         return Jackson2JsonMessageConverter(objectMapper)
     }
-
 }
