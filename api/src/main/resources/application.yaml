@@ -1,7 +1,22 @@
 server:
   name: delivery-api
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
 spring:
+  boot:
+    admin:
+      client:
+        url:
+          - http://localhost:8085 # server address
+
   rabbitmq:
     host: localhost
     port: 5672
@@ -29,3 +44,8 @@ token:
     plus-hour: 1
   refresh-token:
     plus-hour: 12
+
+logging:
+  config: classpath:logback-dev.xml
+  file:
+    name: logFile.log
